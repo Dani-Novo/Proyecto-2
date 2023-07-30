@@ -30,15 +30,16 @@ async function createDB() {
     await connection.query(`
     CREATE TABLE IF NOT EXISTS recomendaciones(
         id INT PRIMARY KEY AUTO_INCREMENT,
-        titulo TEXT NOT NULL,
-        categoria TEXT NOT NULL,
-        lugar TEXT NOT NULL,
-        entradilla TEXT NOT NULL,
-        texto TEXT NOT NULL,
+        titulo VARCHAR(255) NOT NULL,
+        categoria VARCHAR (100) NOT NULL,
+        lugar VARCHAR(100) NOT NULL,
+        entradilla VARCHAR(255) NOT NULL,
+        texto VARCHAR(500) NOT NULL,
         foto TEXT NOT NULL,
         user_id INTEGER NOT NULL,
         fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES usuarios (id) ON DELETE CASCADE)
+        FOREIGN KEY (user_id) REFERENCES usuarios (id) ON DELETE CASCADE
+    )
     `);
 
     await connection.query(`
@@ -51,6 +52,17 @@ async function createDB() {
         FOREIGN KEY (user_id) REFERENCES usuarios (id) ON DELETE CASCADE,
         FOREIGN KEY (recomendacion_id) REFERENCES recomendaciones (id) ON DELETE CASCADE
     );
+    `);
+    await connection.query(`
+    CREATE TABLE IF NOT EXISTS comentarios (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        user_id INT NOT NULL,
+        recomendacion_id INT NOT NULL,
+        comentario VARCHAR(500) NOT NULL,
+        fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES usuarios (id) ON DELETE CASCADE,
+        FOREIGN KEY (recomendacion_id) REFERENCES recomendaciones (id) ON DELETE CASCADE
+    )
     `);
   } catch (e) {
     console.log("Hubo un error:", e.message);
