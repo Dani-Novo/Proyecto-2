@@ -1,4 +1,3 @@
-// "use strict";
 const getDB = require("../../database/db");
 
 const createUser = async (req, res) => {
@@ -8,7 +7,7 @@ const createUser = async (req, res) => {
 
     if (!name || !mail || !pwd) return res.status(400).send("Faltan datos");
 
-    const [usuarios] = await connect.query(
+    const [user] = await connect.query(
       `INSERT INTO usuarios (nombre, email, contraseña) VALUES (?,?,SHA2(?,512))`,
       [name, mail, pwd]
     );
