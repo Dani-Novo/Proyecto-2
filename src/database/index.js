@@ -1,5 +1,3 @@
-// "use strict";
-
 const getDB = require("./db");
 
 async function createDB() {
@@ -24,7 +22,8 @@ async function createDB() {
       contraseña VARCHAR(512) NOT NULL,
       nombre VARCHAR(255),
       fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
-      active BOOLEAN DEFAULT FALSE
+      active BOOLEAN DEFAULT FALSE,
+      role ENUM("admin","normal") DEFAULT "normal" NOT NULL
     );
     `);
 
