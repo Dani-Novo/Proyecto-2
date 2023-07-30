@@ -3,6 +3,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+const createDB = require("./database/index");
 
 const server = express();
 

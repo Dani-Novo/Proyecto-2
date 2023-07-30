@@ -22,7 +22,7 @@ async function createDB() {
       id INT PRIMARY KEY AUTO_INCREMENT,
       email VARCHAR(100) NOT NULL UNIQUE,
       nombre VARCHAR(255),
-      registration_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+      fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
       active BOOLEAN DEFAULT FALSE
     );
     `);
@@ -37,7 +37,7 @@ async function createDB() {
         texto TEXT NOT NULL,
         foto TEXT NOT NULL,
         user_id INTEGER NOT NULL,
-        creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES usuarios (id) ON DELETE CASCADE)
     `);
 
@@ -47,7 +47,7 @@ async function createDB() {
         user_id INT NOT NULL,
         recomendacion_id INT NOT NULL,
         voto INT NOT NULL,
-        creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES usuarios (id) ON DELETE CASCADE,
         FOREIGN KEY (recomendacion_id) REFERENCES recomendaciones (id) ON DELETE CASCADE
     );
