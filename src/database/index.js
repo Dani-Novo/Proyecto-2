@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 const getDB = require("./db");
 
@@ -21,6 +21,7 @@ async function createDB() {
     CREATE TABLE IF NOT EXISTS usuarios(
       id INT PRIMARY KEY AUTO_INCREMENT,
       email VARCHAR(100) NOT NULL UNIQUE,
+      contraseña VARCHAR(512) NOT NULL,
       nombre VARCHAR(255),
       fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
       active BOOLEAN DEFAULT FALSE
@@ -64,14 +65,9 @@ async function createDB() {
         FOREIGN KEY (recomendacion_id) REFERENCES recomendaciones (id) ON DELETE CASCADE
     )
     `);
+    connection.release();
   } catch (e) {
     console.log("Hubo un error:", e.message);
-  } finally {
-    if (connection) {
-      connection.release();
-
-      process.exit();
-    }
   }
 }
 
