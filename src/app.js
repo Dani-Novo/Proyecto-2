@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const createDB = require("./database/index");
 
 const userRouter = require("../src/router/userRouter");
+const entriesRouter = require("../src/router/entriesRouter");
 
 const server = express();
 
@@ -11,10 +12,11 @@ server.use(express.json());
 server.use(morgan("dev"));
 
 server.get("/", (req, res) => {
-  res.send("<h3>Estoy aca</h3>");
+  res.send("<h3>Estoy aquí</h3>");
 });
 
 server.use(userRouter);
+server.use(entriesRouter);
 
 server.use((err, _req, res, _next) => {
   const status = err.status || 500;
