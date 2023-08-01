@@ -5,9 +5,9 @@ const loginUser = async (req, res) => {
   try {
     const connect = await getDB();
 
-    const { email, pwd } = req.body;
+    const { mail, pwd } = req.body;
 
-    if (!email || !pwd) return res.status(400).send("Faltan datos");
+    if (!mail || !pwd) return res.status(400).send("Faltan datos");
 
     const [user] = await connect.query(
       `
@@ -15,7 +15,7 @@ const loginUser = async (req, res) => {
                 FROM usuarios
                 WHERE email = ? AND contraseña = SHA2(?,512)
             `,
-      [email, pwd]
+      [mail, pwd]
     );
 
     if (!user.length)

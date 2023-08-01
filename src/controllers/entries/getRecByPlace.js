@@ -9,7 +9,7 @@ const getRecomendationByPlace = async (req,res) =>{
 
         const [result] = await connect.query(`
 
-            SELECT r.titulo, r.categoria, r.lugar, r.entradilla,r.texto,r.foto
+            SELECT r.titulo, r.categoria, r.lugar, r.entradilla, r.texto, r.foto
             FROM recomendaciones r
             WHERE r.lugar=?`,
             [place]

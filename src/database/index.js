@@ -11,9 +11,6 @@ async function createDB() {
 
     console.log("Base de datos creada");
 
-    //await connection.query(
-    //"DROP TABLE IF EXISTS  votos, recomendaciones, usuarios"
-    //);
 
     await connection.query(`
     CREATE TABLE IF NOT EXISTS usuarios(

@@ -13,7 +13,7 @@ const userLogged = async (req, res, next) => {
     try {
       tokenInfo = jwt.verify(authorization, process.env.SECRET_TOKEN);
     } catch (error) {
-      return res.status(401).send("Tokne no válido");
+      return res.status(401).send("Token no válido");
     }
 
     req.userInfo = tokenInfo;
