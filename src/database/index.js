@@ -11,13 +11,13 @@ async function createDB() {
 
     console.log("Base de datos creada");
 
-
     await connection.query(`
     CREATE TABLE IF NOT EXISTS usuarios(
       id INT PRIMARY KEY AUTO_INCREMENT,
       email VARCHAR(100) NOT NULL UNIQUE,
       contraseña VARCHAR(512) NOT NULL,
       nombre VARCHAR(255),
+      avatar VARCHAR(100),
       fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
       active BOOLEAN DEFAULT FALSE,
       role ENUM("admin","normal") DEFAULT "normal" NOT NULL
@@ -32,7 +32,7 @@ async function createDB() {
         lugar VARCHAR(100) NOT NULL,
         entradilla VARCHAR(255) NOT NULL,
         texto VARCHAR(500) NOT NULL,
-        foto TEXT NOT NULL,
+        foto VARCHAR(100),
         user_id INTEGER NOT NULL,
         fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES usuarios (id) ON DELETE CASCADE

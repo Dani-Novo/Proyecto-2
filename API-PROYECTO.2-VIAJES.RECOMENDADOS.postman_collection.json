@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "1f8a6a8d-e183-4863-8dd7-5806ca53f1f0",
+		"name": "API-PROYECTO.2-VIAJES.RECOMENDADOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28582364"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Dani\",\n    \"mail\": \"daninovo@gmail.com\",\n    \"pwd\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mail\": \"daninovo@gmail.com\",\n    \"pwd\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/usuarios/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Avatar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY5MDk5NDU3NywiZXhwIjoxNjkxMDgwOTc3fQ.z--T5k-PtHbLVz_1Z4XNr9NzHKoYrIhSl343vvpjti4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/hacker/Escritorio/descarga.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/usuarios/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recomendaciones",
+			"item": [
+				{
+					"name": "Postear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY5MTAwMTE3MCwiZXhwIjoxNjkxMDg3NTcwfQ.0N6dkhBgHnQX4mztkzAB9e6NaorpEfrWFUY0U4p0qAM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Coruña",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Ciudad",
+									"type": "text"
+								},
+								{
+									"key": "place",
+									"value": "Riazor",
+									"type": "text"
+								},
+								{
+									"key": "intro",
+									"value": "Mi viaje a Riazor",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Hola Riazor",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/hacker/Escritorio/descarga.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/recomendaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recomendaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Votar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vote\": \"7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/recomendaciones/1/votos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recomendaciones",
+								"1",
+								"votos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publicar comentario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"Una parte de la ciudad muy bonita\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/recomendaciones/1/comentarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recomendaciones",
+								"1",
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/recomendaciones/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recomendaciones",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Por lugar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/recomendaciones/lugar/Riazor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recomendaciones",
+								"lugar",
+								"Riazor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Por categoría",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/recomendaciones/categoria/ciudad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recomendaciones",
+								"categoria",
+								"ciudad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ordenar por votos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/recomendaciones/ordenador-por-votos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recomendaciones",
+								"ordenador-por-votos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY5MTAwMTE3MCwiZXhwIjoxNjkxMDg3NTcwfQ.0N6dkhBgHnQX4mztkzAB9e6NaorpEfrWFUY0U4p0qAM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/recomendaciones/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recomendaciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
