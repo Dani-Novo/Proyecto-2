@@ -1,33 +1,30 @@
-const getDB = require("../database/db")
+const getDB = require("../database/db");
 
-const recExists = async (req,res,next) =>{
-    try {
-        const connect = await getDB();
+const recExists = async (req, res, next) => {
+  try {
+    const connect = await getDB();
 
-        const {idRec} = req.params
- 
+    const { idRec } = req.params;
 
-        const [rec] = await connect.query(
-            `
+    const [rec] = await connect.query(
+      `
                 SELECT id
                 FROM recomendaciones
                 WHERE id=?
             
             `,
-            [idRec]
+      [idRec]
+    );
 
-        )
+    connect.release();
 
-        connect.release();
+    if (rec.length === 0)
+      return res.status(404).send("No existe esa recomendación");
 
-        if(rec.length === 0) return res.status(404).send('No existe esa recomendación');
-        
-        next();
-        
-    } catch (error) {
-        console.log(error)
-        
-    }
-}
+    next();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-module.exports=recExists
+module.exports = recExists;

@@ -4,6 +4,7 @@ const router = express.Router();
 
 const userLogged = require("../middlewares/userLogged");
 const recExists = require("../middlewares/recExists");
+const canDelete = require("../middlewares/canDelete");
 
 const {
   postRecomendation,
@@ -13,18 +14,29 @@ const {
   voteRec,
   getRecByVote,
   postComment,
+  deleteRec,
 } = require("../controllers/entries");
 
 router.post("/recomendaciones", userLogged, postRecomendation);
-router.post("/recomendaciones/:idRec/votos", userLogged, recExists, voteRec);
+router.post("/recomendaciones/:idRec/votar", userLogged, recExists, voteRec);
 router.post(
   "/recomendaciones/:idRec/comentarios",
   userLogged,
   recExists,
   postComment
 );
+
 router.get("/recomendaciones/:idRec", recExists, getRecomendationById);
 router.get("/recomendaciones/lugar/:place", getRecomendationByPlace);
-router.get("/votos", getRecByVote);
+router.get("/recomendaciones/ordenar-por-votos", getRecByVote);
 router.get("/recomendaciones/categoria/:category", getRecomendationByCategory);
+
+router.delete(
+  "/recomendaciones/:idRec",
+  userLogged,
+  recExists,
+  canDelete,
+  deleteRec
+);
+
 module.exports = router;

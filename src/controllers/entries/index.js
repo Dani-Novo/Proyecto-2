@@ -5,6 +5,7 @@ const getRecomendationByCategory = require("./getRecByCategory");
 const voteRec = require("./voteRec");
 const getRecByVote = require("./getRecByVote");
 const postComment = require("./postComment");
+const deleteRec = require("./deleteRec");
 
 module.exports = {
   postRecomendation,
@@ -14,4 +15,5 @@ module.exports = {
   voteRec,
   getRecByVote,
   postComment,
+  deleteRec,
 };
