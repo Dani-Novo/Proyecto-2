@@ -36,3 +36,4 @@ Se nos proporcionan las siguientes reglas para la API:
   ○ Publicar comentarios en las recomendaciones
 
 
+Muchas gracias por pasar por aquí! 🤗
