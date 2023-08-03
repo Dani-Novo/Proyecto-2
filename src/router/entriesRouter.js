@@ -15,6 +15,7 @@ const {
   getRecByVote,
   postComment,
   deleteRec,
+  getAllRec,
 } = require("../controllers/entries");
 
 router.post("/recomendaciones", userLogged, postRecomendation);
@@ -26,9 +27,10 @@ router.post(
   postComment
 );
 
+router.get("/recomendaciones", getAllRec);
+router.get("/recomendaciones/ordenar-por-votos", getRecByVote);
 router.get("/recomendaciones/:idRec", recExists, getRecomendationById);
 router.get("/recomendaciones/lugar/:place", getRecomendationByPlace);
-router.get("/recomendaciones/ordenar-por-votos", getRecByVote);
 router.get("/recomendaciones/categoria/:category", getRecomendationByCategory);
 
 router.delete(
