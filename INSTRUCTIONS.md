@@ -5,8 +5,8 @@ Endpoint de búsqueda de recomendaciones:
 Método: GET🟢
 Ruta: /recomendaciones
 Parámetros de consulta:
-recomendaciones/lugar (opcional): para buscar recomendaciones por lugar específico.
-recomendaciones/categoria (opcional): para buscar recomendaciones por categoría.
+recomendaciones/lugar/:place (opcional): para buscar recomendaciones por lugar específico.
+recomendaciones/categoria/:category (opcional): para buscar recomendaciones por categoría.
 Respuesta: Devuelve una lista de recomendaciones que coinciden con los criterios de búsqueda.
 
 Endpoint para ordenar recomendaciones por votos:
@@ -57,7 +57,7 @@ Respuesta: Devuelve una confirmación de que el voto ha sido registrado exitosam
 Opcional - Endpoint para gestionar el perfil de usuario:
 
 Método: PUT🟡
-Ruta: /usuarios/perfil
+Ruta: /usuarios/:idUser
 Cuerpo de la solicitud: JSON con los campos que el usuario desea actualizar (por ejemplo, nombre, email, password, foto de perfil).
 Encabezados de la solicitud: Debe incluir el token de autenticación del usuario registrado.
 Respuesta: Devuelve una confirmación de que la actualización del perfil se ha realizado con éxito.
